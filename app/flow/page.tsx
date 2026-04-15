@@ -90,7 +90,7 @@ export default function FlowPage() {
         ))}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 20 }}>
+      <div className="grid-flow">
         {/* SVG Flow Diagram */}
         <div
           style={{
@@ -99,6 +99,7 @@ export default function FlowPage() {
             borderRadius: 12,
             overflow: "auto",
             maxHeight: 580,
+            WebkitOverflowScrolling: "touch" as React.CSSProperties["WebkitOverflowScrolling"],
           }}
         >
           <svg

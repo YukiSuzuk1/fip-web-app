@@ -61,7 +61,7 @@ export default function CalculatorPage() {
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+      <div className="grid-calc">
         {/* Input */}
         <div
           style={{

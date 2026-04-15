@@ -94,14 +94,7 @@ export default function HomePage() {
       </div>
 
       {/* Stats */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 16,
-          marginBottom: 24,
-        }}
-      >
+      <div className="grid-3col" style={{ marginBottom: 24 }}>
         <StatCard value={`${srsStats.mastered}/${srsStats.total}`} label="カードマスター数" />
         <StatCard value={srsStats.dueToday.toString()} label="本日の復習カード" />
         <StatCard
@@ -141,39 +134,12 @@ export default function HomePage() {
 
       {/* Mode Grid */}
       <div style={{ color: "#7090b0", fontSize: 13, marginBottom: 12 }}>学習モードを選択</div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 14,
-        }}
-      >
+      <div className="grid-2col">
         {MODES.map(({ href, icon, label, desc }) => (
-          <Link key={href} href={href} style={{ textDecoration: "none" }}>
-            <div
-              style={{
-                backgroundColor: "var(--bg-card-dark)",
-                border: "1px solid var(--border-color)",
-                borderRadius: 12,
-                padding: "16px",
-                cursor: "pointer",
-                transition: "border-color 0.2s, background-color 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "var(--accent)";
-                el.style.backgroundColor = "#1a2740";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "var(--border-color)";
-                el.style.backgroundColor = "var(--bg-card-dark)";
-              }}
-            >
-              <div style={{ fontSize: 22, marginBottom: 6 }}>{icon}</div>
-              <div style={{ fontWeight: "bold", color: "#d0d8f0", fontSize: 14 }}>{label}</div>
-              <div style={{ color: "var(--text-secondary)", fontSize: 12, marginTop: 4 }}>{desc}</div>
-            </div>
+          <Link key={href} href={href} className="mode-card">
+            <div style={{ fontSize: 22, marginBottom: 6 }}>{icon}</div>
+            <div style={{ fontWeight: "bold", color: "#d0d8f0", fontSize: 14 }}>{label}</div>
+            <div style={{ color: "var(--text-secondary)", fontSize: 12, marginTop: 4 }}>{desc}</div>
           </Link>
         ))}
       </div>

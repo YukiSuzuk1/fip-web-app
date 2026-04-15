@@ -62,7 +62,7 @@ export default function ProgressPage() {
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
+      <div className="grid-progress-top">
         {/* Level & XP */}
         <div
           style={{
@@ -163,7 +163,7 @@ export default function ProgressPage() {
         <div style={{ color: "var(--accent)", fontWeight: "bold", marginBottom: 16 }}>
           フラッシュカード習熟度分布
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10 }}>
+        <div className="grid-5col">
           {[1, 2, 3, 4, 5].map((box) => (
             <div key={box} style={{ textAlign: "center" }}>
               <div
@@ -223,7 +223,7 @@ export default function ProgressPage() {
         }}
       >
         <div style={{ color: "var(--accent)", fontWeight: "bold", marginBottom: 16 }}>バッジ</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+        <div className="grid-3badge">
           {Object.entries(BADGES).map(([id, info]) => {
             const earned = p.badges.includes(id);
             return (

@@ -107,7 +107,7 @@ export default function QuizPage() {
       {phase === "select" && (
         <div>
           <div style={{ color: "#7090b0", fontSize: 13, marginBottom: 16 }}>レベルを選択してください</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+          <div className="grid-3col" style={{ gap: 12 }}>
             <LevelCard
               label="全レベル"
               count={allQuestions.length}

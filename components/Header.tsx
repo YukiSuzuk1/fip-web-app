@@ -30,28 +30,17 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      style={{
-        backgroundColor: "var(--bg-sidebar)",
-        borderBottom: "1px solid var(--border-color)",
-        padding: "6px 24px",
-        display: "flex",
-        alignItems: "center",
-        gap: 24,
-        height: 50,
-        flexShrink: 0,
-      }}
-    >
-      <span style={{ color: "var(--accent)", fontWeight: "bold", fontSize: 15 }}>
+    <header className="app-header">
+      <span style={{ color: "var(--accent)", fontWeight: "bold", fontSize: 14, whiteSpace: "nowrap" }}>
         ⚡ {xp.toLocaleString()} XP
       </span>
-      <span style={{ color: "var(--accent-blue)", fontSize: 13 }}>
+      <span style={{ color: "var(--accent-blue)", fontSize: 12, whiteSpace: "nowrap" }}>
         Lv.{level} {levelTitle}
       </span>
-      <div style={{ flex: 1, maxWidth: 180, position: "relative" }}>
+      <div style={{ flex: 1, maxWidth: 160, minWidth: 40 }}>
         <div
           style={{
-            height: 6,
+            height: 5,
             backgroundColor: "var(--bg-input)",
             borderRadius: 3,
             overflow: "hidden",
@@ -69,8 +58,8 @@ export default function Header() {
         </div>
       </div>
       {streak > 0 && (
-        <span style={{ color: "#e74c3c", fontSize: 13 }}>
-          🔥 {streak}日連続
+        <span style={{ color: "#e74c3c", fontSize: 12, whiteSpace: "nowrap" }}>
+          🔥 {streak}日
         </span>
       )}
     </header>
