@@ -17,10 +17,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  // Prevent user scaling (prevents accidental zoom on iOS)
-  userScalable: false,
-  viewportFit: "cover", // Needed for safe-area-inset on iPhone notch
+  maximumScale: 5,   // Allow pinch-zoom for accessibility
+  viewportFit: "cover",
   themeColor: "#12192e",
 };
 
@@ -32,7 +30,8 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        {/* Sidebar — visible on desktop, hidden on mobile (CSS) */}
+        {/* Sidebar: CSS class app-sidebar controls visibility.
+            display:none on mobile via media query in globals.css */}
         <Sidebar />
 
         <div className="app-content">
@@ -40,7 +39,7 @@ export default function RootLayout({
           <main className="app-main">{children}</main>
         </div>
 
-        {/* Bottom nav — visible on mobile only (CSS) */}
+        {/* Bottom nav: CSS class bottom-nav, display:none on desktop */}
         <BottomNav />
       </body>
     </html>
