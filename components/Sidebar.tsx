@@ -88,11 +88,11 @@ export default function Sidebar() {
             className="topbar-avatar"
             style={{ width: 36, height: 36, fontSize: 13, flexShrink: 0 }}
           >
-            YS
+            YY
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 13, fontWeight: 600, color: "var(--ink-900)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-              鈴木 悠希
+              鈴木　勇輝
             </div>
             <div style={{ fontSize: 11, color: "var(--ink-500)" }}>
               研修中

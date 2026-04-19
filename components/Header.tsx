@@ -60,7 +60,7 @@ export default function Header() {
       </div>
 
       {/* アバター */}
-      <button className="topbar-avatar">YS</button>
+      <button className="topbar-avatar">YY</button>
     </header>
   );
 }
