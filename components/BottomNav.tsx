@@ -3,13 +3,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { href: "/",           icon: "🏠", label: "ホーム",    key: "" },
-  { href: "/flashcard",  icon: "📇", label: "カード",    key: "flashcard" },
-  { href: "/quiz",       icon: "❓", label: "クイズ",    key: "quiz" },
-  { href: "/scenario",   icon: "📖", label: "シナリオ",  key: "scenario" },
-  { href: "/calculator", icon: "🧮", label: "計算",      key: "calculator" },
-  { href: "/flow",       icon: "🗺️", label: "フロー",    key: "flow" },
-  { href: "/progress",   icon: "📊", label: "進捗",      key: "progress" },
+  { href: "/flashcard", label: "知る",       key: "flashcard", icon: "🔍" },
+  { href: "/flow",      label: "理解する",   key: "flow",      icon: "📖" },
+  { href: "/quiz",      label: "試す",       key: "quiz",      icon: "✏️" },
+  { href: "/progress",  label: "習慣化する", key: "progress",  icon: "📊" },
 ];
 
 export default function BottomNav() {
@@ -18,7 +15,7 @@ export default function BottomNav() {
   return (
     <nav className="bottom-nav">
       {NAV_ITEMS.map(({ href, icon, label, key }) => {
-        const active = key === "" ? pathname === "/" : pathname.startsWith(`/${key}`);
+        const active = pathname.startsWith(`/${key}`);
         return (
           <Link
             key={href}

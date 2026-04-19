@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg-main: #1a1a2e;
-  --bg-sidebar: #12192e;
-  --bg-card: #16213e;
-  --bg-card-dark: #131e36;
-  --bg-input: #0f1e38;
-  --border-color: #1e2d4a;
-  --accent: #f39c12;
-  --accent-blue: #3498db;
-  --accent-green: #27ae60;
-  --accent-red: #e74c3c;
-  --text-primary: #e0e0e0;
-  --text-secondary: #8090b0;
-  --text-muted: #5d6b8a;
+  --bg-main: #EFF6FF;
+  --bg-sidebar: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-dark: #F8FAFF;
+  --bg-input: #F1F5F9;
+  --border-color: #DBEAFE;
+  --accent: #F59E0B;
+  --accent-blue: #2563EB;
+  --accent-green: #10B981;
+  --accent-red: #EF4444;
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
 
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -45,43 +45,42 @@ body {
 }
 
 ::-webkit-scrollbar { width: 4px; height: 4px; }
-::-webkit-scrollbar-track { background: var(--bg-sidebar); }
-::-webkit-scrollbar-thumb { background: #2a4070; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #4a6aaa; }
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #BFDBFE; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #93C5FD; }
 
-::selection { background: rgba(243,156,18,0.3); }
+::selection { background: rgba(37, 99, 235, 0.2); }
 
 /* ═══════════════════════════════════════════════
    SIDEBAR  (desktop only — hidden on mobile)
 ═══════════════════════════════════════════════ */
 .app-sidebar {
-  display: flex;          /* ← CSS controls this, NOT inline style */
+  display: flex;
   flex-direction: column;
   width: 200px;
   min-width: 200px;
   flex-shrink: 0;
   background-color: var(--bg-sidebar);
-  border-right: 2px solid var(--accent);
+  border-right: 1px solid var(--border-color);
   height: 100dvh;
   position: sticky;
   top: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  box-shadow: 2px 0 8px rgba(37, 99, 235, 0.06);
 }
 
 .sidebar-logo {
-  color: var(--accent);
-  font-size: 15px;
-  font-weight: bold;
   padding: 20px 18px 16px;
   border-bottom: 1px solid var(--border-color);
-  line-height: 1.3;
   flex-shrink: 0;
 }
 
 .sidebar-link {
-  display: block;
-  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
   font-size: 13px;
   color: var(--text-secondary);
   background-color: transparent;
@@ -89,15 +88,17 @@ body {
   font-weight: normal;
   text-decoration: none;
   transition: background-color 0.15s, color 0.15s;
+  margin: 2px 8px;
+  border-radius: 8px;
+  border-left: none;
 }
 .sidebar-link:hover {
-  background-color: #1a2540;
-  color: #c0d0e8;
+  background-color: #EFF6FF;
+  color: var(--accent-blue);
 }
 .sidebar-link.active {
-  background-color: #1c2d4e;
-  color: var(--accent);
-  border-left-color: var(--accent);
+  background-color: #DBEAFE;
+  color: var(--accent-blue);
   font-weight: bold;
 }
 
@@ -140,8 +141,8 @@ body {
   padding: 6px 24px;
   display: flex;
   align-items: center;
-  gap: 24px;
-  height: 50px;
+  gap: 16px;
+  height: 52px;
   flex-shrink: 0;
 }
 
@@ -149,26 +150,44 @@ body {
    BOTTOM NAV  (mobile only)
 ═══════════════════════════════════════════════ */
 .bottom-nav {
-  display: none;   /* hidden on desktop */
+  display: none;
 }
 
 /* ═══════════════════════════════════════════════
-   CARD HOVER (CSS — works on touch too)
+   CARD HOVER
 ═══════════════════════════════════════════════ */
 .mode-card {
-  background-color: var(--bg-card-dark);
+  background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 16px;
   cursor: pointer;
-  transition: border-color 0.2s, background-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   text-decoration: none;
   display: block;
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.06);
 }
 .mode-card:hover,
 .mode-card:active {
-  border-color: var(--accent);
-  background-color: #1a2740;
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.feature-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+  text-decoration: none;
+  display: block;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.07);
+}
+.feature-card:hover,
+.feature-card:active {
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.18);
+  transform: translateY(-2px);
 }
 
 /* ═══════════════════════════════════════════════
@@ -222,36 +241,30 @@ input, select, textarea {
    MOBILE  (≤700px)
 ═══════════════════════════════════════════════ */
 @media (max-width: 700px) {
-  /* Hide desktop sidebar */
   .app-sidebar {
     display: none;
   }
 
-  /* Body becomes single column (no sidebar) */
   body {
     flex-direction: column;
   }
 
-  /* Content fills full width */
   .app-content {
     width: 100%;
-    /* Reserve space for fixed bottom nav */
     padding-bottom: calc(56px + var(--safe-bottom));
   }
 
   .app-main {
     padding: 12px;
-    /* Extra padding so last card isn't hidden under bottom nav */
     padding-bottom: calc(80px + var(--safe-bottom));
   }
 
   .app-header {
     padding: 4px 14px;
-    height: 44px;
+    height: 46px;
     gap: 10px;
   }
 
-  /* Show bottom nav */
   .bottom-nav {
     display: flex;
     position: fixed;
@@ -261,7 +274,6 @@ input, select, textarea {
     z-index: 100;
     background-color: var(--bg-sidebar);
     border-top: 1px solid var(--border-color);
-    /* iPhone home indicator safe area */
     padding-bottom: var(--safe-bottom);
     overflow-x: auto;
     scrollbar-width: none;
@@ -278,10 +290,10 @@ input, select, textarea {
     padding: 8px 2px;
     text-decoration: none;
     color: var(--text-secondary);
-    gap: 2px;
+    gap: 3px;
   }
   .bottom-nav-item.active {
-    color: var(--accent);
+    color: var(--accent-blue);
   }
   .bottom-nav-icon {
     font-size: 18px;
@@ -292,7 +304,6 @@ input, select, textarea {
     white-space: nowrap;
   }
 
-  /* Responsive grids */
   .grid-2col,
   .grid-3col,
   .grid-calc,
