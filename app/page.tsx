@@ -162,7 +162,7 @@ export default function HomePage() {
         </div>
 
         {/* Illustration */}
-        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "38%", pointerEvents: "none" }}>
+        <div style={{ position: "absolute", right: -20, top: "50%", transform: "translateY(-50%)", width: "46%", pointerEvents: "none" }}>
           <HeroIllustration />
         </div>
       </div>
@@ -316,64 +316,87 @@ export default function HomePage() {
   );
 }
 
-/* ── Hero Illustration ── */
+/* ── Hero Illustration (design_handoff_fip_academy/components/illustrations.jsx より) ── */
 function HeroIllustration() {
   return (
-    <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg"
-         style={{ width: "100%", height: "100%" }} preserveAspectRatio="xMidYMid slice">
-      {/* Sun */}
-      <circle cx="220" cy="50" r="38" fill="oklch(0.78 0.16 85 / 0.2)" />
-      <circle cx="220" cy="50" r="24" fill="oklch(0.78 0.16 85 / 0.45)" />
-      <circle cx="220" cy="50" r="15" fill="oklch(0.90 0.12 85 / 0.80)" />
+    <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg"
+         style={{ width: "100%", height: "100%" }} preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="heroSunG" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="oklch(0.88 0.17 85)" />
+          <stop offset="100%" stopColor="oklch(0.72 0.18 60)" />
+        </linearGradient>
+        <linearGradient id="heroPanelG" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="oklch(0.72 0.17 230)" />
+          <stop offset="100%" stopColor="oklch(0.42 0.14 240)" />
+        </linearGradient>
+        <linearGradient id="heroLandG" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="oklch(0.65 0.16 155)" />
+          <stop offset="100%" stopColor="oklch(0.35 0.10 160)" />
+        </linearGradient>
+      </defs>
 
-      {/* Power tower */}
-      <g stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" fill="none">
-        <line x1="160" y1="20" x2="155" y2="120" />
-        <line x1="176" y1="20" x2="181" y2="120" />
-        <line x1="148" y1="36" x2="188" y2="36" />
-        <line x1="150" y1="58" x2="186" y2="58" />
-        <line x1="153" y1="80" x2="183" y2="80" />
-        <line x1="156" y1="36" x2="160" y2="58" />
-        <line x1="180" y1="36" x2="176" y2="58" />
-        <line x1="160" y1="58" x2="155" y2="80" />
-        <line x1="176" y1="58" x2="181" y2="80" />
-        <path d="M 148 36 Q 75 52 0 46" />
-        <path d="M 188 36 Q 234 44 280 38" />
+      {/* Sun */}
+      <circle cx="290" cy="70" r="44" fill="url(#heroSunG)" opacity="0.9"/>
+      <circle cx="290" cy="70" r="62" fill="oklch(0.85 0.16 85)" opacity="0.15"/>
+      <circle cx="290" cy="70" r="80" fill="oklch(0.85 0.16 85)" opacity="0.08"/>
+
+      {/* Wind turbine */}
+      <g transform="translate(80 110)" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.85">
+        <line x1="0" y1="0" x2="0" y2="70"/>
+        <g transform="rotate(30)">
+          <ellipse cx="0" cy="-22" rx="4" ry="22" fill="white"/>
+          <ellipse cx="19" cy="11" rx="4" ry="22" fill="white" transform="rotate(120 19 11)"/>
+          <ellipse cx="-19" cy="11" rx="4" ry="22" fill="white" transform="rotate(240 -19 11)"/>
+        </g>
+        <circle cx="0" cy="0" r="4" fill="oklch(0.75 0.17 85)"/>
       </g>
 
-      {/* Buildings */}
-      <rect x="0"   y="110" width="36" height="90" fill="oklch(0.30 0.08 160 / 0.6)"  rx="2" />
-      <rect x="10"  y="88"  width="22" height="112" fill="oklch(0.30 0.08 160 / 0.55)" rx="2" />
-      <rect x="40"  y="70"  width="30" height="130" fill="oklch(0.30 0.08 160 / 0.62)" rx="2" />
-      <rect x="76"  y="90"  width="24" height="110" fill="oklch(0.30 0.08 160 / 0.50)" rx="2" />
-      <rect x="104" y="65"  width="34" height="135" fill="oklch(0.30 0.08 160 / 0.60)" rx="2" />
-
-      {/* Windows */}
-      {[12,17,22].flatMap(x => [95,107,119,131].map(y =>
-        <rect key={`w1-${x}-${y}`} x={x} y={y} width="4" height="4" fill="rgba(255,255,255,0.3)" rx="0.5" />
-      ))}
-      {[44,50,56,62].flatMap(x => [76,88,100,112].map(y =>
-        <rect key={`w2-${x}-${y}`} x={x} y={y} width="4" height="4" fill="rgba(255,255,255,0.3)" rx="0.5" />
-      ))}
+      {/* Secondary turbine */}
+      <g transform="translate(40 140) scale(0.7)" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.55">
+        <line x1="0" y1="0" x2="0" y2="70"/>
+        <ellipse cx="0" cy="-18" rx="3.5" ry="18" fill="white"/>
+        <ellipse cx="16" cy="9" rx="3.5" ry="18" fill="white" transform="rotate(120 16 9)"/>
+        <ellipse cx="-16" cy="9" rx="3.5" ry="18" fill="white" transform="rotate(240 -16 9)"/>
+        <circle cx="0" cy="0" r="3" fill="oklch(0.75 0.17 85)"/>
+      </g>
 
       {/* Ground */}
-      <rect x="0" y="175" width="280" height="25" fill="oklch(0.25 0.07 160 / 0.45)" rx="2" />
+      <path d="M0 200 Q 90 180 180 196 T 360 190 L 360 240 L 0 240 Z" fill="url(#heroLandG)" opacity="0.85"/>
+      <path d="M0 210 Q 110 195 200 208 T 360 205 L 360 240 L 0 240 Z" fill="oklch(0.28 0.08 160)"/>
 
       {/* Solar panels */}
-      {[0, 24].map((dy, i) => (
-        <g key={i} transform={`translate(236, ${105 + dy}) rotate(-8)`}>
-          <rect x="0" y="0" width="36" height="17" fill="oklch(0.62 0.15 230 / 0.75)"
-                stroke="rgba(255,255,255,0.45)" strokeWidth="1" rx="1" />
-          <line x1="0" y1="8.5" x2="36" y2="8.5" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
-          {[9, 18, 27].map(x => (
-            <line key={x} x1={x} y1="0" x2={x} y2="17" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
-          ))}
+      <g transform="translate(180 170)">
+        <g transform="skewX(-20)">
+          <rect x="0" y="0" width="60" height="30" fill="url(#heroPanelG)" stroke="white" strokeWidth="1.5"/>
+          <line x1="20" y1="0" x2="20" y2="30" stroke="white" strokeWidth="1"/>
+          <line x1="40" y1="0" x2="40" y2="30" stroke="white" strokeWidth="1"/>
+          <line x1="0" y1="15" x2="60" y2="15" stroke="white" strokeWidth="1"/>
         </g>
-      ))}
+        <line x1="8" y1="30" x2="8" y2="46" stroke="white" strokeWidth="1.5"/>
+        <line x1="52" y1="30" x2="52" y2="46" stroke="white" strokeWidth="1.5"/>
+      </g>
+      <g transform="translate(250 180)">
+        <g transform="skewX(-20)">
+          <rect x="0" y="0" width="50" height="26" fill="url(#heroPanelG)" stroke="white" strokeWidth="1.2"/>
+          <line x1="16" y1="0" x2="16" y2="26" stroke="white" strokeWidth="0.8"/>
+          <line x1="34" y1="0" x2="34" y2="26" stroke="white" strokeWidth="0.8"/>
+          <line x1="0" y1="13" x2="50" y2="13" stroke="white" strokeWidth="0.8"/>
+        </g>
+      </g>
 
-      {/* Lightning bolt */}
-      <path d="M 262 60 L 254 76 L 261 76 L 252 94 L 271 74 L 263 74 Z"
-            fill="oklch(0.78 0.16 85 / 0.9)" />
+      {/* Floating energy particles */}
+      <g opacity="0.6">
+        <circle cx="150" cy="60" r="2" fill="oklch(0.88 0.17 85)"/>
+        <circle cx="220" cy="40" r="1.5" fill="oklch(0.88 0.17 85)"/>
+        <circle cx="330" cy="130" r="2" fill="oklch(0.88 0.17 85)"/>
+        <circle cx="120" cy="90" r="1" fill="white"/>
+        <circle cx="270" cy="120" r="1" fill="white"/>
+      </g>
+
+      {/* Power lines */}
+      <path d="M20 100 Q 150 80 340 110" stroke="white" strokeWidth="0.6" fill="none" opacity="0.3"/>
+      <path d="M20 120 Q 150 100 340 130" stroke="white" strokeWidth="0.6" fill="none" opacity="0.3"/>
     </svg>
   );
 }
