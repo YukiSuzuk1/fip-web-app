@@ -7,15 +7,12 @@ export default function Header() {
   const [xp, setXp] = useState(0);
   const [level, setLevel] = useState(1);
   const [progress, setProgress] = useState(0);
-  const [xpGain, setXpGain] = useState(0);
+  const [streak] = useState(12); // TODO: load from storage when streak tracking is added
 
   useEffect(() => {
     const refresh = () => {
       const p = loadProgress();
-      const prevXp = Number(sessionStorage.getItem("prev_xp") ?? p.total_xp);
-      const gained = Math.max(0, p.total_xp - prevXp);
       setXp(p.total_xp);
-      setXpGain(gained);
       const lv = getLevelInfo(p.total_xp);
       setLevel(lv.level);
       setProgress(getXpProgress(p.total_xp));
@@ -32,66 +29,65 @@ export default function Header() {
 
   return (
     <header className="app-header">
-      {/* Level + progress bar */}
-      <div style={{ display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
-        <span style={{
-          fontSize: 12, fontWeight: "bold", color: "#2563EB",
-          whiteSpace: "nowrap", background: "#DBEAFE",
-          padding: "2px 8px", borderRadius: 20,
-        }}>
-          Lv.{level}
-        </span>
-        <div style={{
-          flex: 1, maxWidth: 140, height: 6,
-          backgroundColor: "#DBEAFE", borderRadius: 3, overflow: "hidden",
-        }}>
-          <div style={{
-            height: "100%",
-            width: `${Math.round(progress * 100)}%`,
-            background: "linear-gradient(to right, #F59E0B, #FBBF24)",
-            borderRadius: 3,
-            transition: "width 0.5s ease",
-          }} />
-        </div>
+      {/* 検索ピル */}
+      <div className="topbar-search">
+        <SearchIcon />
+        <span>用語・クイズを検索</span>
+        <kbd>⌘K</kbd>
       </div>
 
-      {/* Spacer */}
       <div style={{ flex: 1 }} />
 
-      {/* XP display */}
-      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-        <span style={{ fontSize: 16 }}>⭐</span>
-        <span style={{
-          fontSize: 14, fontWeight: "bold", color: "#1E293B",
-        }}>
-          {xp.toLocaleString()}
-        </span>
+      {/* 連続学習ストリーク */}
+      <div className="streak-pill">
+        <FireIcon />
+        {streak}日
       </div>
 
-      {/* XP gain badge */}
-      {xpGain > 0 && (
-        <div style={{
-          background: "#D1FAE5", color: "#059669",
-          fontSize: 11, fontWeight: "bold",
-          padding: "2px 8px", borderRadius: 20,
-          whiteSpace: "nowrap",
-        }}>
-          +{xpGain}pt
+      {/* XPピル: Lv + バー + ポイント */}
+      <div className="xp-pill">
+        <span className="xp-level">Lv.{level}</span>
+        <div className="xp-bar-wrap">
+          <div
+            className="xp-bar-fill"
+            style={{ width: `${Math.round(progress * 100)}%` }}
+          />
         </div>
-      )}
-
-      {/* Avatar */}
-      <div style={{
-        width: 32, height: 32, borderRadius: "50%",
-        background: "linear-gradient(135deg, #2563EB, #60A5FA)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        flexShrink: 0,
-      }}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
+        <div className="xp-count">
+          <StarIcon />
+          {xp.toLocaleString()}
+        </div>
       </div>
+
+      {/* アバター */}
+      <button className="topbar-avatar">YS</button>
     </header>
+  );
+}
+
+/* ── Inline SVG Icons ── */
+function SearchIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="8"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+  );
+}
+
+function FireIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2c0 0-5 5-5 10a5 5 0 0010 0c0-5-5-10-5-10zm0 14a3 3 0 01-3-3c0-2.5 3-6 3-6s3 3.5 3 6a3 3 0 01-3 3z"/>
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
   );
 }

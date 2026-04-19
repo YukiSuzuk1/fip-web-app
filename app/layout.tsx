@@ -5,21 +5,21 @@ import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 
 export const metadata: Metadata = {
-  title: "FIP学習ゲーム",
+  title: "FIP Academy",
   description: "FIP太陽光発電制度を体系的に学ぶ学習アプリ",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
-    title: "FIP学習",
+    statusBarStyle: "default",
+    title: "FIP Academy",
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,   // Allow pinch-zoom for accessibility
+  maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#12192e",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -29,17 +29,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
-        {/* Sidebar: CSS class app-sidebar controls visibility.
-            display:none on mobile via media query in globals.css */}
         <Sidebar />
-
         <div className="app-content">
           <Header />
           <main className="app-main">{children}</main>
         </div>
-
-        {/* Bottom nav: CSS class bottom-nav, display:none on desktop */}
         <BottomNav />
       </body>
     </html>
