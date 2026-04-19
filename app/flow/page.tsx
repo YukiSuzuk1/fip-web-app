@@ -62,7 +62,7 @@ export default function FlowPage() {
   return (
     <div style={{ maxWidth: 1000, margin: "0 auto" }}>
       <div style={{ marginBottom: 20 }}>
-        <div style={{ color: "var(--accent)", fontSize: 20, fontWeight: "bold" }}>
+        <div style={{ color: "var(--accent-blue)", fontSize: 20, fontWeight: "bold" }}>
           🗺️ フロー図学習
         </div>
         <div style={{ color: "var(--text-secondary)", fontSize: 13, marginTop: 4 }}>
@@ -223,7 +223,7 @@ export default function FlowPage() {
               </div>
               <div
                 style={{
-                  color: "#eef2ff",
+                  color: "var(--text-primary)",
                   fontSize: 16,
                   fontWeight: "bold",
                   marginBottom: 12,
@@ -234,7 +234,7 @@ export default function FlowPage() {
               </div>
               <div
                 style={{
-                  color: "#c8d4ea",
+                  color: "var(--text-secondary)",
                   fontSize: 13,
                   lineHeight: 1.8,
                 }}
@@ -254,12 +254,12 @@ export default function FlowPage() {
                         key={cid}
                         onClick={() => handleNodeClick(n)}
                         style={{
-                          backgroundColor: "#0f1e38",
-                          border: "1px solid #1e2d4a",
+                          backgroundColor: "#EFF6FF",
+                          border: "1px solid #DBEAFE",
                           borderRadius: 6,
                           padding: "6px 10px",
                           fontSize: 12,
-                          color: "#5dade2",
+                          color: "#2563EB",
                           cursor: "pointer",
                           marginBottom: 6,
                         }}

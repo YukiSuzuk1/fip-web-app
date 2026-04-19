@@ -126,14 +126,15 @@ export default function FlashcardPage() {
             position: "fixed",
             top: 20,
             right: 20,
-            background: "linear-gradient(to bottom, #2a4070, #1a2d50)",
-            border: "1px solid #4a8ab8",
+            background: "white",
+            border: "1px solid #DBEAFE",
             borderRadius: 12,
             padding: "10px 18px",
-            color: "var(--accent)",
+            color: "#2563EB",
             fontWeight: "bold",
             fontSize: 15,
             zIndex: 1000,
+            boxShadow: "0 4px 12px rgba(37,99,235,0.15)",
           }}
         >
           {toast}
@@ -143,7 +144,7 @@ export default function FlashcardPage() {
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
         <div>
-          <div style={{ color: "var(--accent)", fontSize: 20, fontWeight: "bold" }}>
+          <div style={{ color: "var(--accent-blue)", fontSize: 20, fontWeight: "bold" }}>
             📇 フラッシュカード
           </div>
           <div style={{ color: "var(--text-secondary)", fontSize: 13, marginTop: 4 }}>
@@ -158,11 +159,12 @@ export default function FlashcardPage() {
               style={{
                 padding: "6px 14px",
                 borderRadius: 6,
-                border: `1px solid ${filter === m ? "var(--accent)" : "var(--border-color)"}`,
-                backgroundColor: filter === m ? "#1c2d4e" : "var(--bg-card-dark)",
-                color: filter === m ? "var(--accent)" : "var(--text-secondary)",
+                border: `1px solid ${filter === m ? "#2563EB" : "var(--border-color)"}`,
+                backgroundColor: filter === m ? "#DBEAFE" : "var(--bg-card-dark)",
+                color: filter === m ? "#2563EB" : "var(--text-secondary)",
                 fontSize: 12,
                 cursor: "pointer",
+                fontWeight: filter === m ? "bold" : "normal",
               }}
             >
               {m === "due" ? "復習のみ" : "全カード"}
@@ -204,7 +206,7 @@ export default function FlashcardPage() {
           }}
         >
           <div style={{ fontSize: 40, marginBottom: 16 }}>🎉</div>
-          <div style={{ color: "var(--accent)", fontSize: 20, fontWeight: "bold", marginBottom: 8 }}>
+          <div style={{ color: "#2563EB", fontSize: 20, fontWeight: "bold", marginBottom: 8 }}>
             セッション完了！
           </div>
           <div style={{ color: "var(--text-secondary)", marginBottom: 24 }}>
@@ -214,13 +216,14 @@ export default function FlashcardPage() {
           <button
             onClick={() => loadQueue(filter)}
             style={{
-              backgroundColor: "#1a2d50",
-              color: "#d0d8e8",
-              border: "1px solid #2a4070",
+              backgroundColor: "#2563EB",
+              color: "white",
+              border: "none",
               borderRadius: 7,
               padding: "10px 28px",
               fontSize: 14,
               cursor: "pointer",
+              fontWeight: "bold",
             }}
           >
             もう一度
@@ -352,9 +355,9 @@ export default function FlashcardPage() {
               <button
                 onClick={handleFlip}
                 style={{
-                  backgroundColor: "#1a3a6e",
-                  color: "var(--accent)",
-                  border: "1px solid #3a6aae",
+                  backgroundColor: "#2563EB",
+                  color: "white",
+                  border: "none",
                   fontSize: 15,
                   fontWeight: "bold",
                   padding: "11px 36px",
@@ -401,13 +404,14 @@ export default function FlashcardPage() {
               <button
                 onClick={handleNext}
                 style={{
-                  backgroundColor: "#1a2d50",
-                  color: "#d0d8e8",
-                  border: "1px solid #2a4070",
+                  backgroundColor: "#2563EB",
+                  color: "white",
+                  border: "none",
                   borderRadius: 7,
                   padding: "10px 28px",
                   fontSize: 14,
                   cursor: "pointer",
+                  fontWeight: "bold",
                 }}
               >
                 次のカードへ →

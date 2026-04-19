@@ -91,7 +91,7 @@ export default function ScenarioPage() {
   return (
     <div style={{ maxWidth: 760, margin: "0 auto" }}>
       <div style={{ marginBottom: 20 }}>
-        <div style={{ color: "var(--accent)", fontSize: 20, fontWeight: "bold" }}>📖 シナリオクイズ</div>
+        <div style={{ color: "var(--accent-blue)", fontSize: 20, fontWeight: "bold" }}>📖 シナリオクイズ</div>
         <div style={{ color: "var(--text-secondary)", fontSize: 13, marginTop: 4 }}>
           全{allScenarios.length}問 · 実際の数値を使った計算・応用問題
         </div>
@@ -103,9 +103,9 @@ export default function ScenarioPage() {
           <button
             onClick={startAll}
             style={{
-              backgroundColor: "#1a3a6e",
-              color: "var(--accent)",
-              border: "1px solid #3a6aae",
+              backgroundColor: "#2563EB",
+              color: "white",
+              border: "none",
               borderRadius: 22,
               padding: "12px 40px",
               fontSize: 15,
@@ -133,7 +133,7 @@ export default function ScenarioPage() {
               >
                 <div>
                   <span style={{ color: "var(--text-muted)", fontSize: 12, marginRight: 8 }}>#{i + 1}</span>
-                  <span style={{ color: "#d0d8e8", fontSize: 14 }}>
+                  <span style={{ color: "var(--text-primary)", fontSize: 14 }}>
                     {(s as { title?: string }).title || s.question.substring(0, 40) + "…"}
                   </span>
                 </div>
@@ -208,20 +208,20 @@ export default function ScenarioPage() {
                 Lv.{q.level}
               </span>
             </div>
-            <div style={{ color: "#eef2ff", fontSize: 15, lineHeight: 1.7 }}>{q.question}</div>
+            <div style={{ color: "var(--text-primary)", fontSize: 15, lineHeight: 1.7 }}>{q.question}</div>
           </div>
 
           {/* Choices */}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 14 }}>
             {choices.map(({ label, text }) => {
-              let bg = "#131e36";
-              let border = "2px solid #1e2d4a";
-              let color = "#d0d8e8";
+              let bg = "#FFFFFF";
+              let border = "2px solid #DBEAFE";
+              let color = "var(--text-primary)";
               if (answered) {
                 if (label === q.correct) {
-                  bg = "#1a4a2a"; border = "2px solid #27ae60"; color = "#a8f0c0";
+                  bg = "#D1FAE5"; border = "2px solid #10B981"; color = "#065F46";
                 } else if (label === selected) {
-                  bg = "#4a1a1a"; border = "2px solid #e74c3c"; color = "#f0a8a8";
+                  bg = "#FEE2E2"; border = "2px solid #EF4444"; color = "#991B1B";
                 }
               }
               return (
@@ -265,8 +265,8 @@ export default function ScenarioPage() {
                 onClick={handleExplanation}
                 style={{
                   backgroundColor: "transparent",
-                  color: "#5dade2",
-                  border: "1px solid #2a5070",
+                  color: "#2563EB",
+                  border: "1px solid #DBEAFE",
                   borderRadius: 6,
                   padding: "4px 14px",
                   fontSize: 12,
@@ -281,17 +281,17 @@ export default function ScenarioPage() {
           {showExplanation && (
             <div
               style={{
-                backgroundColor: selected === q.correct ? "#0e2318" : "#1e0f0f",
-                border: `1px solid ${selected === q.correct ? "#27ae60" : "#c0392b"}`,
+                backgroundColor: selected === q.correct ? "#ECFDF5" : "#FEF2F2",
+                border: `1px solid ${selected === q.correct ? "#10B981" : "#EF4444"}`,
                 borderRadius: 10,
                 padding: "14px 18px",
                 marginBottom: 14,
                 fontSize: 14,
                 lineHeight: 1.7,
-                color: "#c8d4ea",
+                color: "var(--text-primary)",
               }}
             >
-              <div style={{ fontWeight: "bold", marginBottom: 6, color: selected === q.correct ? "#27ae60" : "#e74c3c" }}>
+              <div style={{ fontWeight: "bold", marginBottom: 6, color: selected === q.correct ? "#059669" : "#DC2626" }}>
                 {selected === q.correct ? "✓ 正解！" : `✗ 不正解（正解: ${q.correct}）`}
               </div>
               {q.explanation}
@@ -303,9 +303,10 @@ export default function ScenarioPage() {
               <button
                 onClick={handleNext}
                 style={{
-                  backgroundColor: "#1a2d50", color: "#d0d8e8",
-                  border: "1px solid #2a4070", borderRadius: 7,
+                  backgroundColor: "#2563EB", color: "white",
+                  border: "none", borderRadius: 7,
                   padding: "10px 32px", fontSize: 14, cursor: "pointer",
+                  fontWeight: "bold",
                 }}
               >
                 {currentIdx + 1 >= questions.length ? "結果を見る" : "次の問題 →"}
@@ -325,10 +326,10 @@ export default function ScenarioPage() {
           }}
         >
           <div style={{ fontSize: 40, marginBottom: 16 }}>🎉</div>
-          <div style={{ color: "var(--accent)", fontSize: 22, fontWeight: "bold", marginBottom: 8 }}>
+          <div style={{ color: "#2563EB", fontSize: 22, fontWeight: "bold", marginBottom: 8 }}>
             シナリオクイズ完了！
           </div>
-          <div style={{ color: "#c8d4ea", fontSize: 20, marginBottom: 24 }}>
+          <div style={{ color: "var(--text-primary)", fontSize: 20, marginBottom: 24 }}>
             {sessionCorrect} / {questions.length} 正解（
             {Math.round((sessionCorrect / questions.length) * 100)}%）
           </div>
@@ -336,9 +337,10 @@ export default function ScenarioPage() {
             <button
               onClick={startAll}
               style={{
-                backgroundColor: "#1a2d50", color: "#d0d8e8",
-                border: "1px solid #2a4070", borderRadius: 7,
+                backgroundColor: "#2563EB", color: "white",
+                border: "none", borderRadius: 7,
                 padding: "10px 24px", fontSize: 14, cursor: "pointer",
+                fontWeight: "bold",
               }}
             >
               もう一度
@@ -346,8 +348,8 @@ export default function ScenarioPage() {
             <button
               onClick={() => setPhase("list")}
               style={{
-                backgroundColor: "#1a2d50", color: "#d0d8e8",
-                border: "1px solid #2a4070", borderRadius: 7,
+                backgroundColor: "#EFF6FF", color: "#2563EB",
+                border: "1px solid #DBEAFE", borderRadius: 7,
                 padding: "10px 24px", fontSize: 14, cursor: "pointer",
               }}
             >

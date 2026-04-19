@@ -56,7 +56,7 @@ export default function ProgressPage() {
   return (
     <div style={{ maxWidth: 900, margin: "0 auto" }}>
       <div style={{ marginBottom: 20 }}>
-        <div style={{ color: "var(--accent)", fontSize: 20, fontWeight: "bold" }}>📊 進捗・実績</div>
+        <div style={{ color: "var(--accent-blue)", fontSize: 20, fontWeight: "bold" }}>📊 進捗・実績</div>
         <div style={{ color: "var(--text-secondary)", fontSize: 13, marginTop: 4 }}>
           学習履歴・XP・バッジ・正答率
         </div>
@@ -75,7 +75,7 @@ export default function ProgressPage() {
           <div style={{ color: "var(--accent)", fontSize: 22, fontWeight: "bold", marginBottom: 4 }}>
             Lv.{lv.level} {lv.title}
           </div>
-          <div style={{ color: "#7090b0", fontSize: 13, marginBottom: 16 }}>
+          <div style={{ color: "rgba(255,255,255,0.75)", fontSize: 13, marginBottom: 16 }}>
             {xp.toLocaleString()} XP{nextLv ? ` / ${nextLv.min_xp.toLocaleString()} XP` : " (最大)"}
           </div>
           <div
@@ -134,7 +134,7 @@ export default function ProgressPage() {
             padding: "20px",
           }}
         >
-          <div style={{ color: "#5dade2", fontWeight: "bold", marginBottom: 16 }}>正答率サマリー</div>
+          <div style={{ color: "#2563EB", fontWeight: "bold", marginBottom: 16 }}>正答率サマリー</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <AccuracyBar
               label="択一クイズ"
@@ -160,7 +160,7 @@ export default function ProgressPage() {
           marginBottom: 20,
         }}
       >
-        <div style={{ color: "var(--accent)", fontWeight: "bold", marginBottom: 16 }}>
+        <div style={{ color: "#2563EB", fontWeight: "bold", marginBottom: 16 }}>
           フラッシュカード習熟度分布
         </div>
         <div className="grid-5col">
@@ -222,7 +222,7 @@ export default function ProgressPage() {
           marginBottom: 20,
         }}
       >
-        <div style={{ color: "var(--accent)", fontWeight: "bold", marginBottom: 16 }}>バッジ</div>
+        <div style={{ color: "#2563EB", fontWeight: "bold", marginBottom: 16 }}>バッジ</div>
         <div className="grid-3badge">
           {Object.entries(BADGES).map(([id, info]) => {
             const earned = p.badges.includes(id);
@@ -230,15 +230,15 @@ export default function ProgressPage() {
               <div
                 key={id}
                 style={{
-                  backgroundColor: earned ? "#1a2d50" : "#0f1624",
-                  border: `1px solid ${earned ? "#3a7ab8" : "var(--border-color)"}`,
+                  backgroundColor: earned ? "#EFF6FF" : "#F8FAFF",
+                  border: `1px solid ${earned ? "#2563EB" : "var(--border-color)"}`,
                   borderRadius: 10,
                   padding: "12px",
                   opacity: earned ? 1 : 0.5,
                 }}
               >
                 <div style={{ fontSize: 24, marginBottom: 6 }}>{info.icon}</div>
-                <div style={{ color: earned ? "#d0d8e8" : "#4a5568", fontWeight: "bold", fontSize: 13 }}>
+                <div style={{ color: earned ? "#1E293B" : "#64748B", fontWeight: "bold", fontSize: 13 }}>
                   {info.name}
                 </div>
                 <div style={{ color: "var(--text-muted)", fontSize: 11, marginTop: 2 }}>
@@ -260,7 +260,7 @@ export default function ProgressPage() {
             padding: "20px",
           }}
         >
-          <div style={{ color: "var(--accent)", fontWeight: "bold", marginBottom: 16 }}>
+          <div style={{ color: "#2563EB", fontWeight: "bold", marginBottom: 16 }}>
             最近の回答履歴（直近20件）
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -314,7 +314,7 @@ function AccuracyBar({
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 4 }}>
         <span style={{ color: "var(--text-secondary)" }}>{label}</span>
-        <span style={{ color: "#d0d8e8" }}>
+        <span style={{ color: "var(--text-primary)", fontWeight: "bold" }}>
           {acc !== null ? `${acc}%（${total}回）` : "未受験"}
         </span>
       </div>

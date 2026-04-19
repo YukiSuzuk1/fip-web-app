@@ -34,7 +34,7 @@ export default function CalculatorPage() {
 
   const inputStyle = {
     backgroundColor: "var(--bg-input)",
-    border: "1px solid #2a4070",
+    border: "1px solid #DBEAFE",
     borderRadius: 5,
     color: "var(--text-primary)",
     padding: "7px 10px",
@@ -71,7 +71,7 @@ export default function CalculatorPage() {
             padding: "20px",
           }}
         >
-          <div style={{ color: "var(--accent)", fontWeight: "bold", marginBottom: 16 }}>
+          <div style={{ color: "#2563EB", fontWeight: "bold", marginBottom: 16 }}>
             入力パラメータ
           </div>
 
@@ -86,7 +86,7 @@ export default function CalculatorPage() {
             />
           </div>
 
-          <div style={{ color: "#5dade2", fontSize: 12, fontWeight: "bold", marginBottom: 10, marginTop: 20 }}>
+          <div style={{ color: "#2563EB", fontSize: 12, fontWeight: "bold", marginBottom: 10, marginTop: 20 }}>
             参照価格の計算要素
           </div>
 
@@ -160,9 +160,9 @@ export default function CalculatorPage() {
             onClick={handleCalculate}
             style={{
               width: "100%",
-              backgroundColor: "#1a3a6e",
-              color: "var(--accent)",
-              border: "1px solid #3a6aae",
+              backgroundColor: "#2563EB",
+              color: "white",
+              border: "none",
               borderRadius: 8,
               padding: "11px 0",
               fontSize: 15,
@@ -189,7 +189,7 @@ export default function CalculatorPage() {
               lineHeight: 2,
             }}
           >
-            <div style={{ color: "#5dade2", fontWeight: "bold", marginBottom: 8 }}>計算式</div>
+            <div style={{ color: "#2563EB", fontWeight: "bold", marginBottom: 8 }}>計算式</div>
             <div style={{ color: "#9aabb8" }}>
               参照価格 = 前年度年平均<br />
               　　　　＋（当月平均 − 前年同月）<br />
@@ -208,7 +208,7 @@ export default function CalculatorPage() {
               padding: "20px",
             }}
           >
-            <div style={{ color: "var(--accent)", fontWeight: "bold", marginBottom: 16 }}>
+            <div style={{ color: "#2563EB", fontWeight: "bold", marginBottom: 16 }}>
               計算結果
             </div>
 
@@ -237,7 +237,7 @@ export default function CalculatorPage() {
                 <ResultRow
                   label="市場売電収入"
                   value={`${marketIncome.toLocaleString()} 円`}
-                  color="#c8d4ea"
+                  color="var(--text-primary)"
                   formula={`${currentMonthAvg}円 × ${generationKwh.toLocaleString()}kWh`}
                 />
 
@@ -274,7 +274,7 @@ export default function CalculatorPage() {
               marginTop: 14,
             }}
           >
-            <div style={{ color: "#5dade2", fontWeight: "bold", fontSize: 13, marginBottom: 10 }}>
+            <div style={{ color: "#2563EB", fontWeight: "bold", fontSize: 13, marginBottom: 10 }}>
               参考値（2026年度）
             </div>
             <table style={{ width: "100%", fontSize: 12, borderCollapse: "collapse" }}>

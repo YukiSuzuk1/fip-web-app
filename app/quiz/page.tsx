@@ -96,7 +96,7 @@ export default function QuizPage() {
   return (
     <div style={{ maxWidth: 740, margin: "0 auto" }}>
       <div style={{ marginBottom: 20 }}>
-        <div style={{ color: "var(--accent)", fontSize: 20, fontWeight: "bold" }}>❓ 択一クイズ</div>
+        <div style={{ color: "var(--accent-blue)", fontSize: 20, fontWeight: "bold" }}>❓ 択一クイズ</div>
         <div style={{ color: "var(--text-secondary)", fontSize: 13, marginTop: 4 }}>
           全{allQuestions.length}問 · Lv.1〜5
           {stats.total > 0 && ` · 通算正答率 ${stats.accuracy}%（${stats.correct}/${stats.total}）`}
@@ -106,7 +106,7 @@ export default function QuizPage() {
       {/* Level Select */}
       {phase === "select" && (
         <div>
-          <div style={{ color: "#7090b0", fontSize: 13, marginBottom: 16 }}>レベルを選択してください</div>
+          <div style={{ color: "var(--text-secondary)", fontSize: 13, marginBottom: 16 }}>レベルを選択してください</div>
           <div className="grid-3col" style={{ gap: 12 }}>
             <LevelCard
               label="全レベル"
@@ -159,34 +159,36 @@ export default function QuizPage() {
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
               <span
                 style={{
-                  backgroundColor: "#1a2d50",
-                  color: "var(--text-secondary)",
+                  backgroundColor: "#DBEAFE",
+                  color: "#2563EB",
                   borderRadius: 4,
                   padding: "2px 10px",
                   fontSize: 12,
+                  fontWeight: "bold",
                 }}
               >
                 {q.category || `Lv.${q.level}`}
               </span>
-              <span style={{ color: "var(--text-muted)", fontSize: 12 }}>Lv.{q.level}</span>
+              <span style={{ color: "var(--text-secondary)", fontSize: 12 }}>Lv.{q.level}</span>
             </div>
-            <div style={{ color: "#eef2ff", fontSize: 16, lineHeight: 1.7 }}>{q.question}</div>
+            <div style={{ color: "var(--text-primary)", fontSize: 16, lineHeight: 1.7 }}>{q.question}</div>
           </div>
 
           {/* Choices */}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 16 }}>
             {choices.map(({ label, text }) => {
-              let bg = "#131e36";
-              let border = "2px solid #1e2d4a";
-              let color = "#d0d8e8";
+              let bg = "#FFFFFF";
+              let border = "2px solid #DBEAFE";
+              let color = "var(--text-primary)";
               if (answered) {
                 if (label === q.correct) {
-                  bg = "#1a4a2a"; border = "2px solid #27ae60"; color = "#a8f0c0";
+                  bg = "#D1FAE5"; border = "2px solid #10B981"; color = "#065F46";
                 } else if (label === selected) {
-                  bg = "#4a1a1a"; border = "2px solid #e74c3c"; color = "#f0a8a8";
+                  bg = "#FEE2E2"; border = "2px solid #EF4444"; color = "#991B1B";
                 }
               } else if (label === selected) {
                 border = "2px solid var(--accent-blue)";
+                bg = "#EFF6FF";
               }
               return (
                 <button
@@ -217,17 +219,17 @@ export default function QuizPage() {
           {answered && (
             <div
               style={{
-                backgroundColor: selected === q.correct ? "#0e2318" : "#1e0f0f",
-                border: `1px solid ${selected === q.correct ? "#27ae60" : "#c0392b"}`,
+                backgroundColor: selected === q.correct ? "#ECFDF5" : "#FEF2F2",
+                border: `1px solid ${selected === q.correct ? "#10B981" : "#EF4444"}`,
                 borderRadius: 10,
                 padding: "14px 18px",
                 marginBottom: 16,
                 fontSize: 14,
                 lineHeight: 1.7,
-                color: "#c8d4ea",
+                color: "var(--text-primary)",
               }}
             >
-              <div style={{ fontWeight: "bold", marginBottom: 6, color: selected === q.correct ? "#27ae60" : "#e74c3c" }}>
+              <div style={{ fontWeight: "bold", marginBottom: 6, color: selected === q.correct ? "#059669" : "#DC2626" }}>
                 {selected === q.correct ? "✓ 正解！" : `✗ 不正解（正解: ${q.correct}）`}
               </div>
               {q.explanation}
@@ -239,13 +241,14 @@ export default function QuizPage() {
               <button
                 onClick={handleNext}
                 style={{
-                  backgroundColor: "#1a2d50",
-                  color: "#d0d8e8",
-                  border: "1px solid #2a4070",
+                  backgroundColor: "#2563EB",
+                  color: "white",
+                  border: "none",
                   borderRadius: 7,
                   padding: "10px 32px",
                   fontSize: 14,
                   cursor: "pointer",
+                  fontWeight: "bold",
                 }}
               >
                 {currentIdx + 1 >= questions.length ? "結果を見る" : "次の問題 →"}
@@ -267,10 +270,10 @@ export default function QuizPage() {
           }}
         >
           <div style={{ fontSize: 40, marginBottom: 16 }}>🎉</div>
-          <div style={{ color: "var(--accent)", fontSize: 22, fontWeight: "bold", marginBottom: 8 }}>
+          <div style={{ color: "#2563EB", fontSize: 22, fontWeight: "bold", marginBottom: 8 }}>
             クイズ完了！
           </div>
-          <div style={{ color: "#c8d4ea", fontSize: 20, marginBottom: 8 }}>
+          <div style={{ color: "var(--text-primary)", fontSize: 20, marginBottom: 8 }}>
             {sessionCorrect} / {questions.length} 正解
           </div>
           <div style={{ color: "var(--text-secondary)", fontSize: 16, marginBottom: 24 }}>
@@ -280,13 +283,14 @@ export default function QuizPage() {
             <button
               onClick={() => startQuiz(levelFilter)}
               style={{
-                backgroundColor: "#1a2d50",
-                color: "#d0d8e8",
-                border: "1px solid #2a4070",
+                backgroundColor: "#2563EB",
+                color: "white",
+                border: "none",
                 borderRadius: 7,
                 padding: "10px 24px",
                 fontSize: 14,
                 cursor: "pointer",
+                fontWeight: "bold",
               }}
             >
               もう一度
@@ -294,9 +298,9 @@ export default function QuizPage() {
             <button
               onClick={() => setPhase("select")}
               style={{
-                backgroundColor: "#1a2d50",
-                color: "#d0d8e8",
-                border: "1px solid #2a4070",
+                backgroundColor: "#EFF6FF",
+                color: "#2563EB",
+                border: "1px solid #DBEAFE",
                 borderRadius: 7,
                 padding: "10px 24px",
                 fontSize: 14,
@@ -338,13 +342,13 @@ function LevelCard({
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLDivElement;
-        el.style.backgroundColor = "#1a2740";
-        el.style.borderColor = color;
+        el.style.backgroundColor = "#EFF6FF";
+        el.style.boxShadow = "0 4px 12px rgba(37,99,235,0.15)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLDivElement;
         el.style.backgroundColor = "var(--bg-card-dark)";
-        el.style.borderColor = "var(--border-color)";
+        el.style.boxShadow = "none";
       }}
     >
       <div style={{ color, fontSize: 18, fontWeight: "bold" }}>{label}</div>
